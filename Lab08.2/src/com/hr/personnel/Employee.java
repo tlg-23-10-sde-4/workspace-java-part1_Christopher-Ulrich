@@ -27,7 +27,7 @@ public class Employee {
     private LocalDate hireDate;
 
     // constructors
-    public Employee() {
+    public Employee() {   // There is a call to super() in here whether you type it in or not
     }
 
     public Employee(String name, LocalDate hireDate) {

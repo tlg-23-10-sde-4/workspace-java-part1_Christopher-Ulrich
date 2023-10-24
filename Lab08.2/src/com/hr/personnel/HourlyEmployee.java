@@ -9,7 +9,7 @@ public class HourlyEmployee extends Employee {
     private double hours;
 
     // constructors
-    public HourlyEmployee() {
+    public HourlyEmployee() {   // There is a call to super() in here whether you type it in or not
     }
 
     public HourlyEmployee(String name, LocalDate hireDate) {

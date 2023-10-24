@@ -7,7 +7,7 @@ public class SalariedEmployee extends Employee {
     double salary;
 
     // constructors
-    public SalariedEmployee() {
+    public SalariedEmployee() { //    // There is a call to super() in here whether you type it in or not
     }
 
     public SalariedEmployee(String name, LocalDate hireDate) {
