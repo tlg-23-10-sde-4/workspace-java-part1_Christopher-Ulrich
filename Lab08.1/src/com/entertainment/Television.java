@@ -35,6 +35,11 @@ public class Television {
     // Every Television() object HAS-A tuner
     private final Tuner tuner = new Tuner(); // Instantiated internally; not exposed
 
+
+    // for muting behavior
+    private boolean isMuted;    // provide getter only
+    private int oldVolume;  //completely hidden, no gets or sets
+
     // CONSTRUCTORS - special methods that get called when the client says "new"
     public Television() {
         instanceCount++;
@@ -56,6 +61,18 @@ public class Television {
     }
 
     // BUSINESS METHODS (functions) - what operations can com.entertainment.Television objects do?
+    public void mute() {
+        if (!isMuted) {   // not currently muted, volume at 32
+            oldVolume = getVolume();
+            setVolume(0);   // make it go quiet (you could also use MIN_Volume here)
+            isMuted = true;
+        }
+        else {
+            setVolume(oldVolume);   //back to 32
+            isMuted = false;
+        }
+    }
+
     public void turnOn() {
         boolean isConnected = verifyInternetConnection();
         System.out.println("Turning on your " + brand + " television to volume " + volume);
@@ -74,6 +91,10 @@ public class Television {
     }
 
     // ACCESSOR METHODS - these provide "controlled access" to the (private) fields
+    public boolean isMuted() {
+        return isMuted;
+    }
+
     public String getBrand() {
         return brand;
     }
@@ -126,17 +147,15 @@ public class Television {
         return true;
     }
 
-/*    public String toString() {
-
-        System.out.printf(""); "com.entertainment.Television %s brand=%s, volume=%s, display=%s, channel=%s"getBrand();
-        getVolume();
-        getDisplay();
-        getCurrentChannel();
-    }*/
-
-
-    /*@Override
     public String toString() {
+        String volumeString = isMuted() ? "<muted>" : String.valueOf(getVolume());
+
+        return String.format("Television: brand=%s, volume %s, display=%s",
+                getBrand(), volumeString, getDisplay());
+    }
+
+
+    /*public String toString() {
         return "com.entertainment.Television" +
                 ": brand=" + getBrand() +
                 ", volume=" + getVolume() +
