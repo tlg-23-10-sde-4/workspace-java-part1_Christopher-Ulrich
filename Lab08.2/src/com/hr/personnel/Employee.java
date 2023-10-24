@@ -22,7 +22,7 @@ import java.time.LocalDate;
  *   String toString()  self-explanatory.
  */
 public class Employee {
-    // fields
+    // fields; properties
     private String name;
     private LocalDate hireDate;
 

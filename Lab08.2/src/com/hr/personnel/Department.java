@@ -26,7 +26,7 @@ public class Department {
     // fields
     private String name;
     private String location;
-    private Employee[] employees = new Employee[100];
+    private final Employee[] employees = new Employee[100];   // marked final because this is a reference to an array which won't change
     private int currentIndex = 0;  // for dealing with the array
 
     // constructors
