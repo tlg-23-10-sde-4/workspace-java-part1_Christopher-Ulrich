@@ -21,4 +21,8 @@ public interface TaxPayer {
     double SALARIED_TAX_RATE = 0.30;
     
     void payTaxes(); // Interface methods are public and abstract, leave public in for clarity
+
+    default void fileReturn() {
+        System.out.println("Return filed by US Mail");
+    }
 }

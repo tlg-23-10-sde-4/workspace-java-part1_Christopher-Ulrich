@@ -29,6 +29,13 @@ public class Executive extends SalariedEmployee { // Private or Public or public
     }
 
     // BUSINESS METHODS (functions) - what operations can com.entertainment.Television objects do?
+
+
+    @Override   // From interface TaxPayer
+    public void fileReturn() {
+        System.out.println("Return filed electronically");
+    }
+
     @Override
     public void work() {
         System.out.println(getName() + " enjoying a nice round of golf");

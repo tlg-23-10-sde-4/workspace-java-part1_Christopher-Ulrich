@@ -37,8 +37,6 @@ public class HourlyEmployee
         System.out.println(getName() + " paid taxes of " + (HOURLY_TAX_RATE * (getHours() * getRate())));
     }
 
-
-
 /*    @Override
     public void pay() {
         System.out.println(getName() + "is paid salary" + (rate * hours));
