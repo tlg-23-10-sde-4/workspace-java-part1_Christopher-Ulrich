@@ -19,10 +19,15 @@ package gov.irs;
 public interface TaxPayer {
     double HOURLY_TAX_RATE = 0.25; // public static fiinal is redundant, but more clear
     double SALARIED_TAX_RATE = 0.30;
+    double DEFAULT_STANDARD_DEDUCTION = 7500.0;
     
     void payTaxes(); // Interface methods are public and abstract, leave public in for clarity
 
     default void fileReturn() {
         System.out.println("Return filed by US Mail");
+    }
+
+    default double getStandardDeduction() {
+            return DEFAULT_STANDARD_DEDUCTION;
     }
 }
