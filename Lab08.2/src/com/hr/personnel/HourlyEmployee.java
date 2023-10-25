@@ -24,6 +24,16 @@ public class HourlyEmployee extends Employee {
     }
 
     // business methods
+    @Override
+    public void pay() {
+        double payment = getRate() * getHours();    // could have just inlined this in sout and removed the local variable
+        System.out.println(getName() + " is paid hourly " + payment);
+    }
+
+/*    @Override
+    public void pay() {
+        System.out.println(getName() + "is paid salary" + (rate * hours));
+    }*/
 
     // accessor methods
 
@@ -43,8 +53,10 @@ public class HourlyEmployee extends Employee {
         this.hours = hours;
     }
 
+    @Override   // Overrides the method in class Employee
     public String toString() {  // This overrides the inherited toString() method from Employee
-        return String.format("Employee: name=%s, hire date %s, hourly rate=%s, hours=%s",
-                getName(), getHireDate(), getRate(), getHours());
+        return super.toString() + ", rate-" + getRate() + ", hours =" + getHours();
+        //return String.format("Employee: name=%s, hire date %s, hourly rate=%s, hours=%s",
+        //        getName(), getHireDate(), getRate(), getHours());
     }
 }

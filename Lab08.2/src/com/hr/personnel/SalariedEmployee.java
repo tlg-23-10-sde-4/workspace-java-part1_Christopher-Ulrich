@@ -22,6 +22,17 @@ public class SalariedEmployee extends Employee {
 
     // business methods
 
+    @Override
+        public void pay() {
+            double payment = getSalary();
+            System.out.println(getName() + " is paid salary " + payment);   // could have inlined this as seen below
+    }
+
+/*    @Override
+    public void pay() {
+        System.out.println(getName() + "is paid salary" + salary);
+    }*/
+
     // accessor methods
 
     double getSalary() {
@@ -32,13 +43,9 @@ public class SalariedEmployee extends Employee {
         this.salary = salary;
     }
 
+    @Override   // Overrides the method in class Employee
     public String toString() {
-        return "Employee: name=" +
-                getName() +
-                ", hireDate=" +
-                getHireDate() +
-                ", salary=" +
-                getSalary();
+        return super.toString() + ", salary=" + getSalary();
     }
 
 }

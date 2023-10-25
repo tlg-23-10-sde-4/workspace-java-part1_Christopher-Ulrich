@@ -21,7 +21,7 @@ import java.time.LocalDate;
  *   void work()        simulates work by printing a message to show it was called.
  *   String toString()  self-explanatory.
  */
-public class Employee {
+public abstract class Employee {    // Abstract class isn't complete; can't directly instantiate it
     // fields; properties
     private String name;
     private LocalDate hireDate;
@@ -40,6 +40,12 @@ public class Employee {
         System.out.println(getName() + " working hard since " + getHireDate());
     }
 
+    /*
+     * Declare that all employees get paid; but don't implement it here
+     * Implement it in the subclasses instead
+     */
+    public abstract void pay(); // Makes this an abstract class, must edit up top; forces subclasses to have this method
+
     // accessor methods
     public String getName() {
         return name;
@@ -57,7 +63,7 @@ public class Employee {
         this.hireDate = hireDate;
     }
 
-    @Override
+    @Override   // Overrides the method in the class Object
     public String toString() {
         return "Employee: name=" + getName() + ", hireDate=" + getHireDate();
     }

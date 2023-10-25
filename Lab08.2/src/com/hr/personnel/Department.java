@@ -53,6 +53,11 @@ public class Department {
         }
     }
 
+    public void payEmployees() {
+        for (int i = 0; i < currentIndex; i++) {
+            employees[i].pay(); // Will not compute until there is a pay() method in Employees
+        }
+    }
     // helper method to add an Employee to the array
     public void addEmployee(Employee emp) {
         employees[currentIndex++] = emp;
@@ -75,7 +80,9 @@ public class Department {
         this.location = location;
     }
 
+    @Override // Overrides the method in the class Object
     public String toString() {
-        return "Department: name=" + getName() + ", location=" + getLocation();
+        return getClass().getSimpleName();
+        // return "Department: name=" + getName() + ", location=" + getLocation();
     }
 }
