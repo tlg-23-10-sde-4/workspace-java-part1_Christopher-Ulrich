@@ -28,6 +28,10 @@ public class SalariedEmployee extends Employee {
             System.out.println(getName() + " is paid salary " + payment);   // could have inlined this as seen below
     }
 
+    public void takeVacation() {
+        System.out.println(getName() + " is on vacation");
+    }
+
 /*    @Override
     public void pay() {
         System.out.println(getName() + "is paid salary" + salary);

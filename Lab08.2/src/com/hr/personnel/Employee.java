@@ -44,7 +44,7 @@ public abstract class Employee {    // Abstract class isn't complete; can't dire
      * Declare that all employees get paid; but don't implement it here
      * Implement it in the subclasses instead
      */
-    public abstract void pay(); // Makes this an abstract class, must edit up top; forces subclasses to have this method
+    public abstract void pay(); // Makes this an abstract class, must edit the class type up top; forces subclasses to have this method
 
     // accessor methods
     public String getName() {

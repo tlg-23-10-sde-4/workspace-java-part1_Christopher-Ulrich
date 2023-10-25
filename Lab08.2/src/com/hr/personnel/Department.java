@@ -58,6 +58,29 @@ public class Department {
             employees[i].pay(); // Will not compute until there is a pay() method in Employees
         }
     }
+
+    /*
+     * "Forced" vacation: all employees with vacation MUST use it
+     */
+    public void holidayBreak () {
+        for (int i= 0; i < currentIndex; i++) {
+            // if employees[i] is really pointing to a SalariedEmployee object
+            // downcast the reference to a more specific type SalariedEmployee
+            // this allows me to call SalariedEmployee-specific methods like takeVacation()
+            // This is called a downcast when you go down the hierarchy of classes and subclasses
+
+
+
+            if (employees[i] instanceof SalariedEmployee) {
+
+            //    ((SalariedEmployee) employees[i]).takeVacation();   // Downcast & method call in one
+
+                SalariedEmployee semp = (SalariedEmployee) employees[i];  // explicit downcast to new var 'semp'
+                semp.takeVacation();    // Call to take vacation
+            }
+        }
+    }
+
     // helper method to add an Employee to the array
     public void addEmployee(Employee emp) {
         employees[currentIndex++] = emp;
