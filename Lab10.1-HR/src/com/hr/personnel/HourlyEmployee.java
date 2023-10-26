@@ -15,6 +15,8 @@ public class HourlyEmployee extends Employee {
     private double rate;
     private double hours;
 
+    public static final double FEDERAL_MINIMUM_WAGE = 15.0;
+
     // constructors
     public HourlyEmployee() {
     }
@@ -23,7 +25,8 @@ public class HourlyEmployee extends Employee {
         super(name, hireDate);  // delegate to superclass ctor for name, hireDate
     }
 
-    public HourlyEmployee(String name, LocalDate hireDate, double rate, double hours) {
+    public HourlyEmployee(String name, LocalDate hireDate, double rate, double hours)
+    throws IllegalArgumentException {
         this(name, hireDate);   // delegate to neighboring ctor for name, hireDate
         setRate(rate);          // handle rate here, by delegating to setter
         setHours(hours);        // handle hours here, by delegating to setter
@@ -46,8 +49,12 @@ public class HourlyEmployee extends Employee {
         return rate;
     }
 
-    public void setRate(double rate) {
-        this.rate = rate;
+    public void setRate(double rate) throws IllegalArgumentException {
+        if (rate < FEDERAL_MINIMUM_WAGE) { // Choose to throw exception first because throwing it will kill the process
+            throw new IllegalArgumentException(
+                    String.format("Hourly wage %s too low; must be above %s \n",
+                            rate, FEDERAL_MINIMUM_WAGE));
+        } this.rate = rate; // And now we don't need the 'else' statement
     }
 
     public double getHours() {
