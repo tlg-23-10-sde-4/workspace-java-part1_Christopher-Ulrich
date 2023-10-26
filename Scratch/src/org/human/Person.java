@@ -14,7 +14,7 @@ class Person {
     private final String name;
     private final LocalDate birthDate;
 
-    // Direct Field assingnment via constructor // Immutable because there are no constructors to change it
+    // Direct Field assignment via constructor // Immutable because there are no constructors to change it
     public Person(String name, LocalDate birthDate) {
         this.name = name;
         this.birthDate = birthDate;

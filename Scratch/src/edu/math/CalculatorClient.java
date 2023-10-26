@@ -24,7 +24,7 @@ class CalculatorClient {
         int result = 0;
         boolean itWorks = true;
         for(int i = 0; i <= 1_000_000; i++) {
-            result = Calculator.randomInt(min, max);
+            result = Calculator.randomInt();
 
             if (min < result || result > max) {
                 itWorks = false;
