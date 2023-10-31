@@ -8,9 +8,11 @@
 
 package com.javatunes.catalog;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
+import java.lang.String.*;
+
+import static java.lang.String.valueOf;
+
 
 // OF COURSE THIS CLASS DOESN'T COMPILE
 // Your first job is to fulfill the contract that this class has signed.
@@ -79,7 +81,7 @@ public class InMemoryCatalog implements Catalog {
         return item;
     }
 
-    /**
+    /** FINISHED
      * Returns a collection of items that match the supplied keyword.
      * This is basically a search method.
      *
@@ -89,22 +91,20 @@ public class InMemoryCatalog implements Catalog {
      * A no-matches result should return an empty collection (not null).
      */
     @Override
-    public Collection<MusicItem> findByKeyword(String keyword) {
-        Collection<MusicItem> theKey = new ArrayList<>();
+    public Collection<MusicItem> findByKeyword(String keyword) { // Need to try with MusicItem
+        Collection<MusicItem> theKeys = new ArrayList<>();
+
         for (MusicItem item : catalogData) {
-            if (item.getId(java.lang.String.contains(keyword)) ||
-                item.getTitle().equals(keyword) ||
-                item.getArtist().equals(keyword) ||
-                item.getReleaseDate().equals(keyword) ||
-                item.getPrice().equals(keyword)) {
-                // item.getMusicCategory(MusicCategory)
-                theKey.add(item);
+            String item2 = valueOf(item);
+            String itemCase = item2.toLowerCase(Locale.ROOT);
+            if (itemCase.contains(keyword)) {
+                theKeys.add(item);
             }
         }
-        return theKey;
+        return theKeys;
     }
 
-    /**
+    /** FINISHED
      * Returns a collection of items that are of the supplied genre (category).
      */
     @Override
@@ -118,24 +118,26 @@ public class InMemoryCatalog implements Catalog {
         return result;
     }
 
-    /**
+    /** FINISHED
      * Size of the catalog.
      */
     @Override
     public int size() {
-        return 0;
+        return catalogData.size();
     }
 
-    /**
+    /** FINISHED
      * Read-only view of the entire catalog.
      * See java.util.Collections class (an all-static utility class) for help here.
      */
     @Override
     public Collection<MusicItem> getAll() {
-        return null;
+        // return catalogData;
+        // Returning a direct reference to the entire collection AND CAN BE MODIFIED
+        return Collections.unmodifiableCollection(catalogData); // no changing it
     }
 
-    /**
+    /** FINISHED
      * TASK: find all MusicItems where title is same as artist.
      * For example, Madonna's first album is simply titled, "Madonna."
      */
@@ -231,6 +233,21 @@ public class InMemoryCatalog implements Catalog {
      * is a collection of items in that genre.  If there is a genre that we don't currently
      * sell, that key's associated value should be an empty collection, not null.
      */
+    public Map<MusicCategory,Collection<MusicItem>> getAllGenreMap() {
+        Map<MusicCategory,Collection<MusicItem>> result = new HashMap<>();
+        for (MusicCategory category : MusicCategory.values()) {
+            Collection<MusicItem> itemList = findByCategory(category);
+            result.put(category, itemList);
+        }
+
+        // TODO: for each category, call another (method in this class) hint
+        // that returns a Collection<MusicItem> for that category
+        // Every enum has a free static method called
+        // every enum has a second free  you can for each over that array, more hints
+        // and then put() (hint) that category and its collection in the result map.
+
+        return result;
+    }
 
 
     @Override

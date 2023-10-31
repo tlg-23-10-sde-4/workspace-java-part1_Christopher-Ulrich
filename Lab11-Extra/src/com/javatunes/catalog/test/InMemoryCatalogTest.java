@@ -26,29 +26,39 @@ class InMemoryCatalogTest {
      * works correctly, you can comment out that call in main() and proceed to the next one.
      */
     public static void main(String[] args) {
+
+        // FINISHED
         // testFindById();
         // testFindByKeyword();
         // testFindByCategory();
         // testSize();
         // testGetAll();
 
-        // TASK method tests
+        // FINISHED TASK method tests
         // testFindSelfTitled();
+        testFindByKeyword();
+
+        // PARTIALLY FINISHED
+
+        // TASK method tests
         // testFindCheapRock();
         // testNumberInGenre();
-        // testFindByKeyword();
         // testFindCheapestByGenre();
-
-        testHasGenre();
+        // testHasGenre();
     }
 
-    private static void testHasGenre() {
+/*    private static void testHasGenre() {
         InMemoryCatalog catalog = new InMemoryCatalog();
 
         boolean hasBlues = catalog.hasGenre(MusicCategory.BLUES);
         System.out.println(hasBlues);
 
         boolean hasJazz = catalog.
+    }*/
+
+    private static void testSize() {
+        InMemoryCatalog catalog = new InMemoryCatalog();
+        System.out.println(catalog.size());
     }
 
     private static void testFindById() {
@@ -61,13 +71,13 @@ class InMemoryCatalogTest {
 
     private static void testFindByKeyword() {
         InMemoryCatalog catalog = new InMemoryCatalog();
-        Collection<MusicItem> anything = catalog.findByKeyword("Seal");
+        Collection<MusicItem> anything = catalog.findByKeyword("the");
         dump(anything);
     }
 
     private static void testFindByCategory() {
         InMemoryCatalog catalog = new InMemoryCatalog();
-        Collection<MusicItem> popItems = catalog.findByCategory(MusicCategory.JAZZ);
+        Collection<MusicItem> popItems = catalog.findByCategory(MusicCategory.CLASSIC_ROCK);
         dump(popItems);
         // System.out.println(popItems);   // toString() automatically called; terrible to read. Make a for-each or a private method called 'dump'
     }
@@ -78,10 +88,10 @@ class InMemoryCatalogTest {
         }
     }
 
-    private static void testSize() {
-    }
-
-    private static void testGetAll() {
+    public static void testGetAll() {
+        InMemoryCatalog catalog = new InMemoryCatalog();
+        dump(catalog.getAll());
+        //allItems.clear();   // Correct behavior is that this should throw a collection
     }
 
     private static void testFindSelfTitled() {
